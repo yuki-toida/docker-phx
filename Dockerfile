@@ -7,6 +7,7 @@ WORKDIR /code
 RUN apt-get update && \
     apt-get install -y --no-install-recommends \
     inotify-tools \
+    mysql-client \
     nodejs \
     npm && \
     npm cache clean && \
