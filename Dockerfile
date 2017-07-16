@@ -1,6 +1,9 @@
 FROM elixir
 MAINTAINER yuki-toida
 
+ADD . /code
+WORKDIR /code
+
 RUN apt-get update && \
     apt-get install -y --no-install-recommends \
     inotify-tools \
@@ -15,6 +18,4 @@ RUN apt-get update && \
     mix local.rebar --force && \
     mix archive.install https://github.com/phoenixframework/archives/raw/master/phx_new.ez --force
 
-EXPOSE 4000
-
-CMD ["sh", "-c", "mix deps.get && mix phoenix.server"]
+CMD ["sh", "-c", "mix deps.get && mix phx.server"]
